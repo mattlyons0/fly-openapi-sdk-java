@@ -36,7 +36,7 @@ public class ExtendRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/apps/{app_name}/volumes/{volume_id}/extend", rawUrl);
     }
     /**
-     * Extend a volume's size within an app using the details provided in the request body.
+     * Extend a volume&apos;s size within an app using the details provided in the request body.
      * @param body The request body
      * @return a {@link ExtendVolumeResponse}
      */
@@ -45,7 +45,7 @@ public class ExtendRequestBuilder extends BaseRequestBuilder {
         return put(body, null);
     }
     /**
-     * Extend a volume's size within an app using the details provided in the request body.
+     * Extend a volume&apos;s size within an app using the details provided in the request body.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link ExtendVolumeResponse}
@@ -57,7 +57,7 @@ public class ExtendRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.send(requestInfo, null, ExtendVolumeResponse::createFromDiscriminatorValue);
     }
     /**
-     * Extend a volume's size within an app using the details provided in the request body.
+     * Extend a volume&apos;s size within an app using the details provided in the request body.
      * @param body The request body
      * @return a {@link RequestInformation}
      */
@@ -66,7 +66,7 @@ public class ExtendRequestBuilder extends BaseRequestBuilder {
         return toPutRequestInformation(body, null);
     }
     /**
-     * Extend a volume's size within an app using the details provided in the request body.
+     * Extend a volume&apos;s size within an app using the details provided in the request body.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}

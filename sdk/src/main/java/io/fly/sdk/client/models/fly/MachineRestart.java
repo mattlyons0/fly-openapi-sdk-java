@@ -17,11 +17,15 @@ public class MachineRestart implements AdditionalDataHolder, Parsable {
      */
     private Map<String, Object> additionalData;
     /**
+     * GPU bid price for spot Machines.
+     */
+    private Double gpuBidPrice;
+    /**
      * When policy is on-failure, the maximum number of times to attempt to restart the Machine before letting it stop.
      */
     private Integer maxRetries;
     /**
-     * * no - Never try to restart a Machine automatically when its main process exits, whether thats on purpose or on a crash.* always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly.* on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules.
+     * * no - Never try to restart a Machine automatically when its main process exits, whether thats on purpose or on a crash.* always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly.* on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules.* spot-price - Starts the Machine only when there is capacity and the spot price is less than or equal to the bid price.
      */
     private MachineRestartPolicy policy;
     /**
@@ -54,10 +58,19 @@ public class MachineRestart implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
+        deserializerMap.put("gpu_bid_price", (n) -> { this.setGpuBidPrice(n.getDoubleValue()); });
         deserializerMap.put("max_retries", (n) -> { this.setMaxRetries(n.getIntegerValue()); });
         deserializerMap.put("policy", (n) -> { this.setPolicy(n.getEnumValue(MachineRestartPolicy::forValue)); });
         return deserializerMap;
+    }
+    /**
+     * Gets the gpu_bid_price property value. GPU bid price for spot Machines.
+     * @return a {@link Double}
+     */
+    @jakarta.annotation.Nullable
+    public Double getGpuBidPrice() {
+        return this.gpuBidPrice;
     }
     /**
      * Gets the max_retries property value. When policy is on-failure, the maximum number of times to attempt to restart the Machine before letting it stop.
@@ -68,7 +81,7 @@ public class MachineRestart implements AdditionalDataHolder, Parsable {
         return this.maxRetries;
     }
     /**
-     * Gets the policy property value. * no - Never try to restart a Machine automatically when its main process exits, whether thats on purpose or on a crash.* always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly.* on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules.
+     * Gets the policy property value. * no - Never try to restart a Machine automatically when its main process exits, whether thats on purpose or on a crash.* always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly.* on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules.* spot-price - Starts the Machine only when there is capacity and the spot price is less than or equal to the bid price.
      * @return a {@link MachineRestartPolicy}
      */
     @jakarta.annotation.Nullable
@@ -81,6 +94,7 @@ public class MachineRestart implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
+        writer.writeDoubleValue("gpu_bid_price", this.getGpuBidPrice());
         writer.writeIntegerValue("max_retries", this.getMaxRetries());
         writer.writeEnumValue("policy", this.getPolicy());
         writer.writeAdditionalData(this.getAdditionalData());
@@ -93,6 +107,13 @@ public class MachineRestart implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
+     * Sets the gpu_bid_price property value. GPU bid price for spot Machines.
+     * @param value Value to set for the gpu_bid_price property.
+     */
+    public void setGpuBidPrice(@jakarta.annotation.Nullable final Double value) {
+        this.gpuBidPrice = value;
+    }
+    /**
      * Sets the max_retries property value. When policy is on-failure, the maximum number of times to attempt to restart the Machine before letting it stop.
      * @param value Value to set for the max_retries property.
      */
@@ -100,7 +121,7 @@ public class MachineRestart implements AdditionalDataHolder, Parsable {
         this.maxRetries = value;
     }
     /**
-     * Sets the policy property value. * no - Never try to restart a Machine automatically when its main process exits, whether thats on purpose or on a crash.* always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly.* on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules.
+     * Sets the policy property value. * no - Never try to restart a Machine automatically when its main process exits, whether thats on purpose or on a crash.* always - Always restart a Machine automatically and never let it enter a stopped state, even when the main process exits cleanly.* on-failure - Try up to MaxRetries times to automatically restart the Machine if it exits with a non-zero exit code. Default when no explicit policy is set, and for Machines with schedules.* spot-price - Starts the Machine only when there is capacity and the spot price is less than or equal to the bid price.
      * @param value Value to set for the policy property.
      */
     public void setPolicy(@jakarta.annotation.Nullable final MachineRestartPolicy value) {

@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
 /**
- * Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses.* "off" or false - Do not autostop the Machine.* "stop" or true - Automatically stop the Machine.* "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible.
+ * Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for &quot;off&quot; and &quot;stop&quot; in responses.* &quot;off&quot; or false - Do not autostop the Machine.* &quot;stop&quot; or true - Automatically stop the Machine.* &quot;suspend&quot; - Automatically suspend the Machine, falling back to a full stop if this is not possible.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public enum MachineServiceAutostop implements ValuedEnum {

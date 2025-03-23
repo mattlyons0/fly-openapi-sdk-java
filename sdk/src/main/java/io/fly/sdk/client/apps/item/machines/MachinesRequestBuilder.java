@@ -39,7 +39,7 @@ public class MachinesRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public MachinesRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/apps/{app_name}/machines{?include_deleted*,region*}", pathParameters);
+        super(requestAdapter, "{+baseurl}/apps/{app_name}/machines{?include_deleted*,region*,state*,summary*}", pathParameters);
     }
     /**
      * Instantiates a new {@link MachinesRequestBuilder} and sets the default values.
@@ -47,7 +47,7 @@ public class MachinesRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public MachinesRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/apps/{app_name}/machines{?include_deleted*,region*}", rawUrl);
+        super(requestAdapter, "{+baseurl}/apps/{app_name}/machines{?include_deleted*,region*,state*,summary*}", rawUrl);
     }
     /**
      * List all Machines associated with a specific app, with optional filters for including deleted Machines and filtering by region.
@@ -158,6 +158,16 @@ public class MachinesRequestBuilder extends BaseRequestBuilder {
         @jakarta.annotation.Nullable
         public String region;
         /**
+         * comma separated list of states to filter (created, started, stopped, suspended)
+         */
+        @jakarta.annotation.Nullable
+        public String state;
+        /**
+         * Only return summary info about machines (omit config, checks, events, host_status, nonce, etc.)
+         */
+        @jakarta.annotation.Nullable
+        public Boolean summary;
+        /**
          * Extracts the query parameters into a map for the URI template parsing.
          * @return a {@link Map<String, Object>}
          */
@@ -166,6 +176,8 @@ public class MachinesRequestBuilder extends BaseRequestBuilder {
             final Map<String, Object> allQueryParams = new HashMap();
             allQueryParams.put("include_deleted", includeDeleted);
             allQueryParams.put("region", region);
+            allQueryParams.put("state", state);
+            allQueryParams.put("summary", summary);
             return allQueryParams;
         }
     }

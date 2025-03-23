@@ -18,7 +18,7 @@ public class MachineService implements AdditionalDataHolder, Parsable {
      */
     private Boolean autostart;
     /**
-     * Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses.* "off" or false - Do not autostop the Machine.* "stop" or true - Automatically stop the Machine.* "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible.
+     * Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for &quot;off&quot; and &quot;stop&quot; in responses.* &quot;off&quot; or false - Do not autostop the Machine.* &quot;stop&quot; or true - Automatically stop the Machine.* &quot;suspend&quot; - Automatically suspend the Machine, falling back to a full stop if this is not possible.
      */
     private MachineServiceAutostop autostop;
     /**
@@ -86,7 +86,7 @@ public class MachineService implements AdditionalDataHolder, Parsable {
         return this.autostart;
     }
     /**
-     * Gets the autostop property value. Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses.* "off" or false - Do not autostop the Machine.* "stop" or true - Automatically stop the Machine.* "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible.
+     * Gets the autostop property value. Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for &quot;off&quot; and &quot;stop&quot; in responses.* &quot;off&quot; or false - Do not autostop the Machine.* &quot;stop&quot; or true - Automatically stop the Machine.* &quot;suspend&quot; - Automatically suspend the Machine, falling back to a full stop if this is not possible.
      * @return a {@link MachineServiceAutostop}
      */
     @jakarta.annotation.Nullable
@@ -209,7 +209,7 @@ public class MachineService implements AdditionalDataHolder, Parsable {
         this.autostart = value;
     }
     /**
-     * Sets the autostop property value. Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for "off" and "stop" in responses.* "off" or false - Do not autostop the Machine.* "stop" or true - Automatically stop the Machine.* "suspend" - Automatically suspend the Machine, falling back to a full stop if this is not possible.
+     * Sets the autostop property value. Accepts a string (new format) or a boolean (old format). For backward compatibility with older clients, the API continues to use booleans for &quot;off&quot; and &quot;stop&quot; in responses.* &quot;off&quot; or false - Do not autostop the Machine.* &quot;stop&quot; or true - Automatically stop the Machine.* &quot;suspend&quot; - Automatically suspend the Machine, falling back to a full stop if this is not possible.
      * @param value Value to set for the autostop property.
      */
     public void setAutostop(@jakarta.annotation.Nullable final MachineServiceAutostop value) {

@@ -22,6 +22,10 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     private MachineConfigChecks checks;
     /**
+     * Containers are a list of containers that will run in the machine. Currently restricted toonly specific organizations.
+     */
+    private java.util.List<ContainerConfig> containers;
+    /**
      * Deprecated: use Service.Autostart instead
      */
     private Boolean disableMachineAutostart;
@@ -94,6 +98,10 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     private StopConfig stopConfig;
     /**
+     * Volumes describe the set of volumes that can be attached to the machine. Used in conjuctionwith containers
+     */
+    private java.util.List<VolumeConfig> volumes;
+    /**
      * Instantiates a new {@link MachineConfig} and sets the default values.
      */
     public MachineConfig() {
@@ -134,6 +142,14 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         return this.checks;
     }
     /**
+     * Gets the containers property value. Containers are a list of containers that will run in the machine. Currently restricted toonly specific organizations.
+     * @return a {@link java.util.List<ContainerConfig>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<ContainerConfig> getContainers() {
+        return this.containers;
+    }
+    /**
      * Gets the disable_machine_autostart property value. Deprecated: use Service.Autostart instead
      * @return a {@link Boolean}
      */
@@ -163,9 +179,10 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(20);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(22);
         deserializerMap.put("auto_destroy", (n) -> { this.setAutoDestroy(n.getBooleanValue()); });
         deserializerMap.put("checks", (n) -> { this.setChecks(n.getObjectValue(MachineConfigChecks::createFromDiscriminatorValue)); });
+        deserializerMap.put("containers", (n) -> { this.setContainers(n.getCollectionOfObjectValues(ContainerConfig::createFromDiscriminatorValue)); });
         deserializerMap.put("disable_machine_autostart", (n) -> { this.setDisableMachineAutostart(n.getBooleanValue()); });
         deserializerMap.put("dns", (n) -> { this.setDns(n.getObjectValue(DNSConfig::createFromDiscriminatorValue)); });
         deserializerMap.put("env", (n) -> { this.setEnv(n.getObjectValue(MachineConfigEnv::createFromDiscriminatorValue)); });
@@ -184,6 +201,7 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         deserializerMap.put("standbys", (n) -> { this.setStandbys(n.getCollectionOfPrimitiveValues(String.class)); });
         deserializerMap.put("statics", (n) -> { this.setStatics(n.getCollectionOfObjectValues(StaticEscaped::createFromDiscriminatorValue)); });
         deserializerMap.put("stop_config", (n) -> { this.setStopConfig(n.getObjectValue(StopConfig::createFromDiscriminatorValue)); });
+        deserializerMap.put("volumes", (n) -> { this.setVolumes(n.getCollectionOfObjectValues(VolumeConfig::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
@@ -307,6 +325,14 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         return this.stopConfig;
     }
     /**
+     * Gets the volumes property value. Volumes describe the set of volumes that can be attached to the machine. Used in conjuctionwith containers
+     * @return a {@link java.util.List<VolumeConfig>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<VolumeConfig> getVolumes() {
+        return this.volumes;
+    }
+    /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
@@ -314,6 +340,7 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeBooleanValue("auto_destroy", this.getAutoDestroy());
         writer.writeObjectValue("checks", this.getChecks());
+        writer.writeCollectionOfObjectValues("containers", this.getContainers());
         writer.writeBooleanValue("disable_machine_autostart", this.getDisableMachineAutostart());
         writer.writeObjectValue("dns", this.getDns());
         writer.writeObjectValue("env", this.getEnv());
@@ -332,6 +359,7 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         writer.writeCollectionOfPrimitiveValues("standbys", this.getStandbys());
         writer.writeCollectionOfObjectValues("statics", this.getStatics());
         writer.writeObjectValue("stop_config", this.getStopConfig());
+        writer.writeCollectionOfObjectValues("volumes", this.getVolumes());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -354,6 +382,13 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     public void setChecks(@jakarta.annotation.Nullable final MachineConfigChecks value) {
         this.checks = value;
+    }
+    /**
+     * Sets the containers property value. Containers are a list of containers that will run in the machine. Currently restricted toonly specific organizations.
+     * @param value Value to set for the containers property.
+     */
+    public void setContainers(@jakarta.annotation.Nullable final java.util.List<ContainerConfig> value) {
+        this.containers = value;
     }
     /**
      * Sets the disable_machine_autostart property value. Deprecated: use Service.Autostart instead
@@ -480,5 +515,12 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     public void setStopConfig(@jakarta.annotation.Nullable final StopConfig value) {
         this.stopConfig = value;
+    }
+    /**
+     * Sets the volumes property value. Volumes describe the set of volumes that can be attached to the machine. Used in conjuctionwith containers
+     * @param value Value to set for the volumes property.
+     */
+    public void setVolumes(@jakarta.annotation.Nullable final java.util.List<VolumeConfig> value) {
+        this.volumes = value;
     }
 }

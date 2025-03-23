@@ -21,6 +21,10 @@ public class File implements AdditionalDataHolder, Parsable {
      */
     private String guestPath;
     /**
+     * Mode bits used to set permissions on this file as accepted by chmod(2).
+     */
+    private Integer mode;
+    /**
      * The base64 encoded string of the file contents.
      */
     private String rawValue;
@@ -58,8 +62,9 @@ public class File implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
         deserializerMap.put("guest_path", (n) -> { this.setGuestPath(n.getStringValue()); });
+        deserializerMap.put("mode", (n) -> { this.setMode(n.getIntegerValue()); });
         deserializerMap.put("raw_value", (n) -> { this.setRawValue(n.getStringValue()); });
         deserializerMap.put("secret_name", (n) -> { this.setSecretName(n.getStringValue()); });
         return deserializerMap;
@@ -71,6 +76,14 @@ public class File implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nullable
     public String getGuestPath() {
         return this.guestPath;
+    }
+    /**
+     * Gets the mode property value. Mode bits used to set permissions on this file as accepted by chmod(2).
+     * @return a {@link Integer}
+     */
+    @jakarta.annotation.Nullable
+    public Integer getMode() {
+        return this.mode;
     }
     /**
      * Gets the raw_value property value. The base64 encoded string of the file contents.
@@ -95,6 +108,7 @@ public class File implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("guest_path", this.getGuestPath());
+        writer.writeIntegerValue("mode", this.getMode());
         writer.writeStringValue("raw_value", this.getRawValue());
         writer.writeStringValue("secret_name", this.getSecretName());
         writer.writeAdditionalData(this.getAdditionalData());
@@ -112,6 +126,13 @@ public class File implements AdditionalDataHolder, Parsable {
      */
     public void setGuestPath(@jakarta.annotation.Nullable final String value) {
         this.guestPath = value;
+    }
+    /**
+     * Sets the mode property value. Mode bits used to set permissions on this file as accepted by chmod(2).
+     * @param value Value to set for the mode property.
+     */
+    public void setMode(@jakarta.annotation.Nullable final Integer value) {
+        this.mode = value;
     }
     /**
      * Sets the raw_value property value. The base64 encoded string of the file contents.

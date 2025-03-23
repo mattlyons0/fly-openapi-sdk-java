@@ -22,6 +22,14 @@ public class MachineExecRequest implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<String> command;
     /**
+     * The container property
+     */
+    private String container;
+    /**
+     * The stdin property
+     */
+    private String stdin;
+    /**
      * The timeout property
      */
     private Integer timeout;
@@ -66,16 +74,34 @@ public class MachineExecRequest implements AdditionalDataHolder, Parsable {
         return this.command;
     }
     /**
+     * Gets the container property value. The container property
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getContainer() {
+        return this.container;
+    }
+    /**
      * The deserialization information for the current model
      * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
         deserializerMap.put("cmd", (n) -> { this.setCmd(n.getStringValue()); });
         deserializerMap.put("command", (n) -> { this.setCommand(n.getCollectionOfPrimitiveValues(String.class)); });
+        deserializerMap.put("container", (n) -> { this.setContainer(n.getStringValue()); });
+        deserializerMap.put("stdin", (n) -> { this.setStdin(n.getStringValue()); });
         deserializerMap.put("timeout", (n) -> { this.setTimeout(n.getIntegerValue()); });
         return deserializerMap;
+    }
+    /**
+     * Gets the stdin property value. The stdin property
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getStdin() {
+        return this.stdin;
     }
     /**
      * Gets the timeout property value. The timeout property
@@ -93,6 +119,8 @@ public class MachineExecRequest implements AdditionalDataHolder, Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("cmd", this.getCmd());
         writer.writeCollectionOfPrimitiveValues("command", this.getCommand());
+        writer.writeStringValue("container", this.getContainer());
+        writer.writeStringValue("stdin", this.getStdin());
         writer.writeIntegerValue("timeout", this.getTimeout());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -116,6 +144,20 @@ public class MachineExecRequest implements AdditionalDataHolder, Parsable {
      */
     public void setCommand(@jakarta.annotation.Nullable final java.util.List<String> value) {
         this.command = value;
+    }
+    /**
+     * Sets the container property value. The container property
+     * @param value Value to set for the container property.
+     */
+    public void setContainer(@jakarta.annotation.Nullable final String value) {
+        this.container = value;
+    }
+    /**
+     * Sets the stdin property value. The stdin property
+     * @param value Value to set for the stdin property.
+     */
+    public void setStdin(@jakarta.annotation.Nullable final String value) {
+        this.stdin = value;
     }
     /**
      * Sets the timeout property value. The timeout property

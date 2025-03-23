@@ -31,10 +31,6 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
      */
     private String fstype;
     /**
-     * The machines_only property
-     */
-    private Boolean machinesOnly;
-    /**
      * The name property
      */
     private String name;
@@ -62,6 +58,10 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
      * fork from remote volume
      */
     private String sourceVolumeId;
+    /**
+     * The unique_zone_app_wide property
+     */
+    private Boolean uniqueZoneAppWide;
     /**
      * Instantiates a new {@link CreateVolumeRequest} and sets the default values.
      */
@@ -121,7 +121,6 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
         deserializerMap.put("compute_image", (n) -> { this.setComputeImage(n.getStringValue()); });
         deserializerMap.put("encrypted", (n) -> { this.setEncrypted(n.getBooleanValue()); });
         deserializerMap.put("fstype", (n) -> { this.setFstype(n.getStringValue()); });
-        deserializerMap.put("machines_only", (n) -> { this.setMachinesOnly(n.getBooleanValue()); });
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
         deserializerMap.put("region", (n) -> { this.setRegion(n.getStringValue()); });
         deserializerMap.put("require_unique_zone", (n) -> { this.setRequireUniqueZone(n.getBooleanValue()); });
@@ -129,6 +128,7 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
         deserializerMap.put("snapshot_id", (n) -> { this.setSnapshotId(n.getStringValue()); });
         deserializerMap.put("snapshot_retention", (n) -> { this.setSnapshotRetention(n.getIntegerValue()); });
         deserializerMap.put("source_volume_id", (n) -> { this.setSourceVolumeId(n.getStringValue()); });
+        deserializerMap.put("unique_zone_app_wide", (n) -> { this.setUniqueZoneAppWide(n.getBooleanValue()); });
         return deserializerMap;
     }
     /**
@@ -138,14 +138,6 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nullable
     public String getFstype() {
         return this.fstype;
-    }
-    /**
-     * Gets the machines_only property value. The machines_only property
-     * @return a {@link Boolean}
-     */
-    @jakarta.annotation.Nullable
-    public Boolean getMachinesOnly() {
-        return this.machinesOnly;
     }
     /**
      * Gets the name property value. The name property
@@ -204,6 +196,14 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
         return this.sourceVolumeId;
     }
     /**
+     * Gets the unique_zone_app_wide property value. The unique_zone_app_wide property
+     * @return a {@link Boolean}
+     */
+    @jakarta.annotation.Nullable
+    public Boolean getUniqueZoneAppWide() {
+        return this.uniqueZoneAppWide;
+    }
+    /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
@@ -213,7 +213,6 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("compute_image", this.getComputeImage());
         writer.writeBooleanValue("encrypted", this.getEncrypted());
         writer.writeStringValue("fstype", this.getFstype());
-        writer.writeBooleanValue("machines_only", this.getMachinesOnly());
         writer.writeStringValue("name", this.getName());
         writer.writeStringValue("region", this.getRegion());
         writer.writeBooleanValue("require_unique_zone", this.getRequireUniqueZone());
@@ -221,6 +220,7 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("snapshot_id", this.getSnapshotId());
         writer.writeIntegerValue("snapshot_retention", this.getSnapshotRetention());
         writer.writeStringValue("source_volume_id", this.getSourceVolumeId());
+        writer.writeBooleanValue("unique_zone_app_wide", this.getUniqueZoneAppWide());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -257,13 +257,6 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
      */
     public void setFstype(@jakarta.annotation.Nullable final String value) {
         this.fstype = value;
-    }
-    /**
-     * Sets the machines_only property value. The machines_only property
-     * @param value Value to set for the machines_only property.
-     */
-    public void setMachinesOnly(@jakarta.annotation.Nullable final Boolean value) {
-        this.machinesOnly = value;
     }
     /**
      * Sets the name property value. The name property
@@ -313,5 +306,12 @@ public class CreateVolumeRequest implements AdditionalDataHolder, Parsable {
      */
     public void setSourceVolumeId(@jakarta.annotation.Nullable final String value) {
         this.sourceVolumeId = value;
+    }
+    /**
+     * Sets the unique_zone_app_wide property value. The unique_zone_app_wide property
+     * @param value Value to set for the unique_zone_app_wide property.
+     */
+    public void setUniqueZoneAppWide(@jakarta.annotation.Nullable final Boolean value) {
+        this.uniqueZoneAppWide = value;
     }
 }

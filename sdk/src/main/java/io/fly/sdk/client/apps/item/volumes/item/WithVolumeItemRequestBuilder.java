@@ -91,7 +91,7 @@ public class WithVolumeItemRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.send(requestInfo, null, Volume::createFromDiscriminatorValue);
     }
     /**
-     * Update a volume's configuration using the details provided in the request body.
+     * Update a volume&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @return a {@link Volume}
      * @throws ErrorResponse When receiving a 400 status code
@@ -101,7 +101,7 @@ public class WithVolumeItemRequestBuilder extends BaseRequestBuilder {
         return put(body, null);
     }
     /**
-     * Update a volume's configuration using the details provided in the request body.
+     * Update a volume&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Volume}
@@ -156,7 +156,7 @@ public class WithVolumeItemRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update a volume's configuration using the details provided in the request body.
+     * Update a volume&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @return a {@link RequestInformation}
      */
@@ -165,7 +165,7 @@ public class WithVolumeItemRequestBuilder extends BaseRequestBuilder {
         return toPutRequestInformation(body, null);
     }
     /**
-     * Update a volume's configuration using the details provided in the request body.
+     * Update a volume&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}

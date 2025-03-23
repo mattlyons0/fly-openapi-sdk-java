@@ -1,12 +1,1 @@
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/0 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/1 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/6 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/7 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/8 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/9 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/14 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/15 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/16 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/17 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/22 - Data and type mismatch found.
-Warning: KiotaBuilder OpenAPI warning: #/components/schemas/fly.Duration/properties/time.Duration/enum/23 - Data and type mismatch found.
+Warning: KiotaBuilder API client was generated with version 1.12.0 and the current version is 1.24.1, it will be upgraded and you should upgrade dependencies

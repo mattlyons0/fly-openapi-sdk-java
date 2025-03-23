@@ -1,4 +1,4 @@
-package io.fly.sdk.client.models.fly;
+package io.fly.sdk.client.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -8,38 +8,38 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class MachineMetrics implements AdditionalDataHolder, Parsable {
+public class ListSecret implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * The https property
+     * The label property
      */
-    private Boolean https;
+    private String label;
     /**
-     * The path property
+     * The publickey property
      */
-    private String path;
+    private java.util.List<Integer> publickey;
     /**
-     * The port property
+     * The type property
      */
-    private Integer port;
+    private String type;
     /**
-     * Instantiates a new {@link MachineMetrics} and sets the default values.
+     * Instantiates a new {@link ListSecret} and sets the default values.
      */
-    public MachineMetrics() {
+    public ListSecret() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link MachineMetrics}
+     * @return a {@link ListSecret}
      */
     @jakarta.annotation.Nonnull
-    public static MachineMetrics createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static ListSecret createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new MachineMetrics();
+        return new ListSecret();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -56,34 +56,34 @@ public class MachineMetrics implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
-        deserializerMap.put("https", (n) -> { this.setHttps(n.getBooleanValue()); });
-        deserializerMap.put("path", (n) -> { this.setPath(n.getStringValue()); });
-        deserializerMap.put("port", (n) -> { this.setPort(n.getIntegerValue()); });
+        deserializerMap.put("label", (n) -> { this.setLabel(n.getStringValue()); });
+        deserializerMap.put("publickey", (n) -> { this.setPublickey(n.getCollectionOfPrimitiveValues(Integer.class)); });
+        deserializerMap.put("type", (n) -> { this.setType(n.getStringValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the https property value. The https property
-     * @return a {@link Boolean}
-     */
-    @jakarta.annotation.Nullable
-    public Boolean getHttps() {
-        return this.https;
-    }
-    /**
-     * Gets the path property value. The path property
+     * Gets the label property value. The label property
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
-    public String getPath() {
-        return this.path;
+    public String getLabel() {
+        return this.label;
     }
     /**
-     * Gets the port property value. The port property
-     * @return a {@link Integer}
+     * Gets the publickey property value. The publickey property
+     * @return a {@link java.util.List<Integer>}
      */
     @jakarta.annotation.Nullable
-    public Integer getPort() {
-        return this.port;
+    public java.util.List<Integer> getPublickey() {
+        return this.publickey;
+    }
+    /**
+     * Gets the type property value. The type property
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getType() {
+        return this.type;
     }
     /**
      * Serializes information the current object
@@ -91,9 +91,9 @@ public class MachineMetrics implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeBooleanValue("https", this.getHttps());
-        writer.writeStringValue("path", this.getPath());
-        writer.writeIntegerValue("port", this.getPort());
+        writer.writeStringValue("label", this.getLabel());
+        writer.writeCollectionOfPrimitiveValues("publickey", this.getPublickey());
+        writer.writeStringValue("type", this.getType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -104,24 +104,24 @@ public class MachineMetrics implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the https property value. The https property
-     * @param value Value to set for the https property.
+     * Sets the label property value. The label property
+     * @param value Value to set for the label property.
      */
-    public void setHttps(@jakarta.annotation.Nullable final Boolean value) {
-        this.https = value;
+    public void setLabel(@jakarta.annotation.Nullable final String value) {
+        this.label = value;
     }
     /**
-     * Sets the path property value. The path property
-     * @param value Value to set for the path property.
+     * Sets the publickey property value. The publickey property
+     * @param value Value to set for the publickey property.
      */
-    public void setPath(@jakarta.annotation.Nullable final String value) {
-        this.path = value;
+    public void setPublickey(@jakarta.annotation.Nullable final java.util.List<Integer> value) {
+        this.publickey = value;
     }
     /**
-     * Sets the port property value. The port property
-     * @param value Value to set for the port property.
+     * Sets the type property value. The type property
+     * @param value Value to set for the type property.
      */
-    public void setPort(@jakarta.annotation.Nullable final Integer value) {
-        this.port = value;
+    public void setType(@jakarta.annotation.Nullable final String value) {
+        this.type = value;
     }
 }

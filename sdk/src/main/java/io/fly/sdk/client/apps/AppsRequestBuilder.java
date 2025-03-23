@@ -149,7 +149,7 @@ public class AppsRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * The org slug, or 'personal', to filter apps
+         * The org slug, or &apos;personal&apos;, to filter apps
          */
         @jakarta.annotation.Nullable
         public String orgSlug;

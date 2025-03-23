@@ -2,6 +2,7 @@ package io.fly.sdk.client.tokens;
 
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
+import io.fly.sdk.client.tokens.kms.KmsRequestBuilder;
 import io.fly.sdk.client.tokens.oidc.OidcRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
@@ -10,6 +11,14 @@ import java.util.Objects;
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class TokensRequestBuilder extends BaseRequestBuilder {
+    /**
+     * The kms property
+     * @return a {@link KmsRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public KmsRequestBuilder kms() {
+        return new KmsRequestBuilder(pathParameters, requestAdapter);
+    }
     /**
      * The oidc property
      * @return a {@link OidcRequestBuilder}

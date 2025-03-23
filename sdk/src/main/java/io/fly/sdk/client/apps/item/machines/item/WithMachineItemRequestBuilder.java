@@ -165,7 +165,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/apps/{app_name}/machines/{machine_id}{?force*}", rawUrl);
     }
     /**
-     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it's running.
+     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it&apos;s running.
      * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
@@ -173,7 +173,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return delete(null);
     }
     /**
-     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it's running.
+     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it&apos;s running.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InputStream}
      */
@@ -201,7 +201,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.send(requestInfo, null, Machine::createFromDiscriminatorValue);
     }
     /**
-     * Update a Machine's configuration using the details provided in the request body.
+     * Update a Machine&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @return a {@link Machine}
      * @throws ErrorResponse When receiving a 400 status code
@@ -211,7 +211,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return post(body, null);
     }
     /**
-     * Update a Machine's configuration using the details provided in the request body.
+     * Update a Machine&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Machine}
@@ -226,7 +226,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.send(requestInfo, errorMapping, Machine::createFromDiscriminatorValue);
     }
     /**
-     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it's running.
+     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it&apos;s running.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -234,7 +234,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return toDeleteRequestInformation(null);
     }
     /**
-     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it's running.
+     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it&apos;s running.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -266,7 +266,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update a Machine's configuration using the details provided in the request body.
+     * Update a Machine&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @return a {@link RequestInformation}
      */
@@ -275,7 +275,7 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(body, null);
     }
     /**
-     * Update a Machine's configuration using the details provided in the request body.
+     * Update a Machine&apos;s configuration using the details provided in the request body.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
@@ -300,12 +300,12 @@ public class WithMachineItemRequestBuilder extends BaseRequestBuilder {
         return new WithMachineItemRequestBuilder(rawUrl, requestAdapter);
     }
     /**
-     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it's running.
+     * Delete a specific Machine within an app by Machine ID, with an optional force parameter to force kill the Machine if it&apos;s running.
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class DeleteQueryParameters implements QueryParameters {
         /**
-         * Force kill the machine if it's running
+         * Force kill the machine if it&apos;s running
          */
         @jakarta.annotation.Nullable
         public Boolean force;

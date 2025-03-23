@@ -8,38 +8,34 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class MachineMetrics implements AdditionalDataHolder, Parsable {
+public class ContainerDependency implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * The https property
+     * The condition property
      */
-    private Boolean https;
+    private ContainerDependencyCondition condition;
     /**
-     * The path property
+     * The name property
      */
-    private String path;
+    private String name;
     /**
-     * The port property
+     * Instantiates a new {@link ContainerDependency} and sets the default values.
      */
-    private Integer port;
-    /**
-     * Instantiates a new {@link MachineMetrics} and sets the default values.
-     */
-    public MachineMetrics() {
+    public ContainerDependency() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link MachineMetrics}
+     * @return a {@link ContainerDependency}
      */
     @jakarta.annotation.Nonnull
-    public static MachineMetrics createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static ContainerDependency createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new MachineMetrics();
+        return new ContainerDependency();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -50,40 +46,31 @@ public class MachineMetrics implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
+     * Gets the condition property value. The condition property
+     * @return a {@link ContainerDependencyCondition}
+     */
+    @jakarta.annotation.Nullable
+    public ContainerDependencyCondition getCondition() {
+        return this.condition;
+    }
+    /**
      * The deserialization information for the current model
      * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(3);
-        deserializerMap.put("https", (n) -> { this.setHttps(n.getBooleanValue()); });
-        deserializerMap.put("path", (n) -> { this.setPath(n.getStringValue()); });
-        deserializerMap.put("port", (n) -> { this.setPort(n.getIntegerValue()); });
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        deserializerMap.put("condition", (n) -> { this.setCondition(n.getEnumValue(ContainerDependencyCondition::forValue)); });
+        deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the https property value. The https property
-     * @return a {@link Boolean}
-     */
-    @jakarta.annotation.Nullable
-    public Boolean getHttps() {
-        return this.https;
-    }
-    /**
-     * Gets the path property value. The path property
+     * Gets the name property value. The name property
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
-    public String getPath() {
-        return this.path;
-    }
-    /**
-     * Gets the port property value. The port property
-     * @return a {@link Integer}
-     */
-    @jakarta.annotation.Nullable
-    public Integer getPort() {
-        return this.port;
+    public String getName() {
+        return this.name;
     }
     /**
      * Serializes information the current object
@@ -91,9 +78,8 @@ public class MachineMetrics implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeBooleanValue("https", this.getHttps());
-        writer.writeStringValue("path", this.getPath());
-        writer.writeIntegerValue("port", this.getPort());
+        writer.writeEnumValue("condition", this.getCondition());
+        writer.writeStringValue("name", this.getName());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -104,24 +90,17 @@ public class MachineMetrics implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the https property value. The https property
-     * @param value Value to set for the https property.
+     * Sets the condition property value. The condition property
+     * @param value Value to set for the condition property.
      */
-    public void setHttps(@jakarta.annotation.Nullable final Boolean value) {
-        this.https = value;
+    public void setCondition(@jakarta.annotation.Nullable final ContainerDependencyCondition value) {
+        this.condition = value;
     }
     /**
-     * Sets the path property value. The path property
-     * @param value Value to set for the path property.
+     * Sets the name property value. The name property
+     * @param value Value to set for the name property.
      */
-    public void setPath(@jakarta.annotation.Nullable final String value) {
-        this.path = value;
-    }
-    /**
-     * Sets the port property value. The port property
-     * @param value Value to set for the port property.
-     */
-    public void setPort(@jakarta.annotation.Nullable final Integer value) {
-        this.port = value;
+    public void setName(@jakarta.annotation.Nullable final String value) {
+        this.name = value;
     }
 }

@@ -1,4 +1,4 @@
-package io.fly.sdk.client.models;
+package io.fly.sdk.client.models.fly;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -8,37 +8,29 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * Optional parameters
+ * ExtraEnv is used to add additional environment variables to the container.
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
+public class ContainerConfigEnv implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * The aud property
+     * Instantiates a new {@link ContainerConfigEnv} and sets the default values.
      */
-    private String aud;
-    /**
-     * The aws_principal_tags property
-     */
-    private Boolean awsPrincipalTags;
-    /**
-     * Instantiates a new {@link CreateOIDCTokenRequest} and sets the default values.
-     */
-    public CreateOIDCTokenRequest() {
+    public ContainerConfigEnv() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link CreateOIDCTokenRequest}
+     * @return a {@link ContainerConfigEnv}
      */
     @jakarta.annotation.Nonnull
-    public static CreateOIDCTokenRequest createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static ContainerConfigEnv createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new CreateOIDCTokenRequest();
+        return new ContainerConfigEnv();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -49,30 +41,12 @@ public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the aud property value. The aud property
-     * @return a {@link String}
-     */
-    @jakarta.annotation.Nullable
-    public String getAud() {
-        return this.aud;
-    }
-    /**
-     * Gets the aws_principal_tags property value. The aws_principal_tags property
-     * @return a {@link Boolean}
-     */
-    @jakarta.annotation.Nullable
-    public Boolean getAwsPrincipalTags() {
-        return this.awsPrincipalTags;
-    }
-    /**
      * The deserialization information for the current model
      * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("aud", (n) -> { this.setAud(n.getStringValue()); });
-        deserializerMap.put("aws_principal_tags", (n) -> { this.setAwsPrincipalTags(n.getBooleanValue()); });
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(0);
         return deserializerMap;
     }
     /**
@@ -81,8 +55,6 @@ public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("aud", this.getAud());
-        writer.writeBooleanValue("aws_principal_tags", this.getAwsPrincipalTags());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -91,19 +63,5 @@ public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;
-    }
-    /**
-     * Sets the aud property value. The aud property
-     * @param value Value to set for the aud property.
-     */
-    public void setAud(@jakarta.annotation.Nullable final String value) {
-        this.aud = value;
-    }
-    /**
-     * Sets the aws_principal_tags property value. The aws_principal_tags property
-     * @param value Value to set for the aws_principal_tags property.
-     */
-    public void setAwsPrincipalTags(@jakarta.annotation.Nullable final Boolean value) {
-        this.awsPrincipalTags = value;
     }
 }

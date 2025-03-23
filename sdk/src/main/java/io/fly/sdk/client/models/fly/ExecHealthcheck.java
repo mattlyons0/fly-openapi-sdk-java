@@ -1,4 +1,4 @@
-package io.fly.sdk.client.models;
+package io.fly.sdk.client.models.fly;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -7,38 +7,31 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/**
- * Optional parameters
- */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
+public class ExecHealthcheck implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * The aud property
+     * The command to run to check the health of the container (e.g. [&quot;cat&quot;, &quot;/tmp/healthy&quot;])
      */
-    private String aud;
+    private java.util.List<String> command;
     /**
-     * The aws_principal_tags property
+     * Instantiates a new {@link ExecHealthcheck} and sets the default values.
      */
-    private Boolean awsPrincipalTags;
-    /**
-     * Instantiates a new {@link CreateOIDCTokenRequest} and sets the default values.
-     */
-    public CreateOIDCTokenRequest() {
+    public ExecHealthcheck() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link CreateOIDCTokenRequest}
+     * @return a {@link ExecHealthcheck}
      */
     @jakarta.annotation.Nonnull
-    public static CreateOIDCTokenRequest createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static ExecHealthcheck createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new CreateOIDCTokenRequest();
+        return new ExecHealthcheck();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -49,20 +42,12 @@ public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
-     * Gets the aud property value. The aud property
-     * @return a {@link String}
+     * Gets the command property value. The command to run to check the health of the container (e.g. [&quot;cat&quot;, &quot;/tmp/healthy&quot;])
+     * @return a {@link java.util.List<String>}
      */
     @jakarta.annotation.Nullable
-    public String getAud() {
-        return this.aud;
-    }
-    /**
-     * Gets the aws_principal_tags property value. The aws_principal_tags property
-     * @return a {@link Boolean}
-     */
-    @jakarta.annotation.Nullable
-    public Boolean getAwsPrincipalTags() {
-        return this.awsPrincipalTags;
+    public java.util.List<String> getCommand() {
+        return this.command;
     }
     /**
      * The deserialization information for the current model
@@ -70,9 +55,8 @@ public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("aud", (n) -> { this.setAud(n.getStringValue()); });
-        deserializerMap.put("aws_principal_tags", (n) -> { this.setAwsPrincipalTags(n.getBooleanValue()); });
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
+        deserializerMap.put("command", (n) -> { this.setCommand(n.getCollectionOfPrimitiveValues(String.class)); });
         return deserializerMap;
     }
     /**
@@ -81,8 +65,7 @@ public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("aud", this.getAud());
-        writer.writeBooleanValue("aws_principal_tags", this.getAwsPrincipalTags());
+        writer.writeCollectionOfPrimitiveValues("command", this.getCommand());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -93,17 +76,10 @@ public class CreateOIDCTokenRequest implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the aud property value. The aud property
-     * @param value Value to set for the aud property.
+     * Sets the command property value. The command to run to check the health of the container (e.g. [&quot;cat&quot;, &quot;/tmp/healthy&quot;])
+     * @param value Value to set for the command property.
      */
-    public void setAud(@jakarta.annotation.Nullable final String value) {
-        this.aud = value;
-    }
-    /**
-     * Sets the aws_principal_tags property value. The aws_principal_tags property
-     * @param value Value to set for the aws_principal_tags property.
-     */
-    public void setAwsPrincipalTags(@jakarta.annotation.Nullable final Boolean value) {
-        this.awsPrincipalTags = value;
+    public void setCommand(@jakarta.annotation.Nullable final java.util.List<String> value) {
+        this.command = value;
     }
 }

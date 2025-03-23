@@ -7,37 +7,22 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/**
- * An optional object that defines one or more named checks. The key for each check is the check name.
- */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class MachineCheck implements AdditionalDataHolder, Parsable {
+public class HTTPHealthcheck implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * The time to wait after a VM starts before checking its health
-     */
-    private Duration gracePeriod;
-    /**
-     * The headers property
+     * Additional headers to send with the request
      */
     private java.util.List<MachineHTTPHeader> headers;
     /**
-     * The time between connectivity checks
-     */
-    private Duration interval;
-    /**
-     * Kind of the check (informational, readiness)
-     */
-    private MachineCheckKind kind;
-    /**
-     * For http checks, the HTTP method to use to when making the request
+     * The HTTP method to use to when making the request
      */
     private String method;
     /**
-     * For http checks, the path to send the request to
+     * The path to send the request to
      */
     private String path;
     /**
@@ -45,40 +30,32 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
      */
     private Integer port;
     /**
-     * For http checks, whether to use http or https
+     * Whether to use http or https
      */
-    private String protocol;
-    /**
-     * The maximum time a connection can take before being reported as failing its health check
-     */
-    private Duration timeout;
+    private ContainerHealthcheckScheme scheme;
     /**
      * If the protocol is https, the hostname to use for TLS certificate validation
      */
     private String tlsServerName;
     /**
-     * For http checks with https protocol, whether or not to verify the TLS certificate
+     * If the protocol is https, whether or not to verify the TLS certificate
      */
     private Boolean tlsSkipVerify;
     /**
-     * tcp or http
+     * Instantiates a new {@link HTTPHealthcheck} and sets the default values.
      */
-    private String type;
-    /**
-     * Instantiates a new {@link MachineCheck} and sets the default values.
-     */
-    public MachineCheck() {
+    public HTTPHealthcheck() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link MachineCheck}
+     * @return a {@link HTTPHealthcheck}
      */
     @jakarta.annotation.Nonnull
-    public static MachineCheck createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static HTTPHealthcheck createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new MachineCheck();
+        return new HTTPHealthcheck();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -94,31 +71,18 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(12);
-        deserializerMap.put("grace_period", (n) -> { this.setGracePeriod(n.getObjectValue(Duration::createFromDiscriminatorValue)); });
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(7);
         deserializerMap.put("headers", (n) -> { this.setHeaders(n.getCollectionOfObjectValues(MachineHTTPHeader::createFromDiscriminatorValue)); });
-        deserializerMap.put("interval", (n) -> { this.setInterval(n.getObjectValue(Duration::createFromDiscriminatorValue)); });
-        deserializerMap.put("kind", (n) -> { this.setKind(n.getEnumValue(MachineCheckKind::forValue)); });
         deserializerMap.put("method", (n) -> { this.setMethod(n.getStringValue()); });
         deserializerMap.put("path", (n) -> { this.setPath(n.getStringValue()); });
         deserializerMap.put("port", (n) -> { this.setPort(n.getIntegerValue()); });
-        deserializerMap.put("protocol", (n) -> { this.setProtocol(n.getStringValue()); });
-        deserializerMap.put("timeout", (n) -> { this.setTimeout(n.getObjectValue(Duration::createFromDiscriminatorValue)); });
+        deserializerMap.put("scheme", (n) -> { this.setScheme(n.getEnumValue(ContainerHealthcheckScheme::forValue)); });
         deserializerMap.put("tls_server_name", (n) -> { this.setTlsServerName(n.getStringValue()); });
         deserializerMap.put("tls_skip_verify", (n) -> { this.setTlsSkipVerify(n.getBooleanValue()); });
-        deserializerMap.put("type", (n) -> { this.setType(n.getStringValue()); });
         return deserializerMap;
     }
     /**
-     * Gets the grace_period property value. The time to wait after a VM starts before checking its health
-     * @return a {@link Duration}
-     */
-    @jakarta.annotation.Nullable
-    public Duration getGracePeriod() {
-        return this.gracePeriod;
-    }
-    /**
-     * Gets the headers property value. The headers property
+     * Gets the headers property value. Additional headers to send with the request
      * @return a {@link java.util.List<MachineHTTPHeader>}
      */
     @jakarta.annotation.Nullable
@@ -126,23 +90,7 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         return this.headers;
     }
     /**
-     * Gets the interval property value. The time between connectivity checks
-     * @return a {@link Duration}
-     */
-    @jakarta.annotation.Nullable
-    public Duration getInterval() {
-        return this.interval;
-    }
-    /**
-     * Gets the kind property value. Kind of the check (informational, readiness)
-     * @return a {@link MachineCheckKind}
-     */
-    @jakarta.annotation.Nullable
-    public MachineCheckKind getKind() {
-        return this.kind;
-    }
-    /**
-     * Gets the method property value. For http checks, the HTTP method to use to when making the request
+     * Gets the method property value. The HTTP method to use to when making the request
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -150,7 +98,7 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         return this.method;
     }
     /**
-     * Gets the path property value. For http checks, the path to send the request to
+     * Gets the path property value. The path to send the request to
      * @return a {@link String}
      */
     @jakarta.annotation.Nullable
@@ -166,20 +114,12 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         return this.port;
     }
     /**
-     * Gets the protocol property value. For http checks, whether to use http or https
-     * @return a {@link String}
+     * Gets the scheme property value. Whether to use http or https
+     * @return a {@link ContainerHealthcheckScheme}
      */
     @jakarta.annotation.Nullable
-    public String getProtocol() {
-        return this.protocol;
-    }
-    /**
-     * Gets the timeout property value. The maximum time a connection can take before being reported as failing its health check
-     * @return a {@link Duration}
-     */
-    @jakarta.annotation.Nullable
-    public Duration getTimeout() {
-        return this.timeout;
+    public ContainerHealthcheckScheme getScheme() {
+        return this.scheme;
     }
     /**
      * Gets the tls_server_name property value. If the protocol is https, the hostname to use for TLS certificate validation
@@ -190,7 +130,7 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         return this.tlsServerName;
     }
     /**
-     * Gets the tls_skip_verify property value. For http checks with https protocol, whether or not to verify the TLS certificate
+     * Gets the tls_skip_verify property value. If the protocol is https, whether or not to verify the TLS certificate
      * @return a {@link Boolean}
      */
     @jakarta.annotation.Nullable
@@ -198,31 +138,18 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         return this.tlsSkipVerify;
     }
     /**
-     * Gets the type property value. tcp or http
-     * @return a {@link String}
-     */
-    @jakarta.annotation.Nullable
-    public String getType() {
-        return this.type;
-    }
-    /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeObjectValue("grace_period", this.getGracePeriod());
         writer.writeCollectionOfObjectValues("headers", this.getHeaders());
-        writer.writeObjectValue("interval", this.getInterval());
-        writer.writeEnumValue("kind", this.getKind());
         writer.writeStringValue("method", this.getMethod());
         writer.writeStringValue("path", this.getPath());
         writer.writeIntegerValue("port", this.getPort());
-        writer.writeStringValue("protocol", this.getProtocol());
-        writer.writeObjectValue("timeout", this.getTimeout());
+        writer.writeEnumValue("scheme", this.getScheme());
         writer.writeStringValue("tls_server_name", this.getTlsServerName());
         writer.writeBooleanValue("tls_skip_verify", this.getTlsSkipVerify());
-        writer.writeStringValue("type", this.getType());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -233,42 +160,21 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         this.additionalData = value;
     }
     /**
-     * Sets the grace_period property value. The time to wait after a VM starts before checking its health
-     * @param value Value to set for the grace_period property.
-     */
-    public void setGracePeriod(@jakarta.annotation.Nullable final Duration value) {
-        this.gracePeriod = value;
-    }
-    /**
-     * Sets the headers property value. The headers property
+     * Sets the headers property value. Additional headers to send with the request
      * @param value Value to set for the headers property.
      */
     public void setHeaders(@jakarta.annotation.Nullable final java.util.List<MachineHTTPHeader> value) {
         this.headers = value;
     }
     /**
-     * Sets the interval property value. The time between connectivity checks
-     * @param value Value to set for the interval property.
-     */
-    public void setInterval(@jakarta.annotation.Nullable final Duration value) {
-        this.interval = value;
-    }
-    /**
-     * Sets the kind property value. Kind of the check (informational, readiness)
-     * @param value Value to set for the kind property.
-     */
-    public void setKind(@jakarta.annotation.Nullable final MachineCheckKind value) {
-        this.kind = value;
-    }
-    /**
-     * Sets the method property value. For http checks, the HTTP method to use to when making the request
+     * Sets the method property value. The HTTP method to use to when making the request
      * @param value Value to set for the method property.
      */
     public void setMethod(@jakarta.annotation.Nullable final String value) {
         this.method = value;
     }
     /**
-     * Sets the path property value. For http checks, the path to send the request to
+     * Sets the path property value. The path to send the request to
      * @param value Value to set for the path property.
      */
     public void setPath(@jakarta.annotation.Nullable final String value) {
@@ -282,18 +188,11 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         this.port = value;
     }
     /**
-     * Sets the protocol property value. For http checks, whether to use http or https
-     * @param value Value to set for the protocol property.
+     * Sets the scheme property value. Whether to use http or https
+     * @param value Value to set for the scheme property.
      */
-    public void setProtocol(@jakarta.annotation.Nullable final String value) {
-        this.protocol = value;
-    }
-    /**
-     * Sets the timeout property value. The maximum time a connection can take before being reported as failing its health check
-     * @param value Value to set for the timeout property.
-     */
-    public void setTimeout(@jakarta.annotation.Nullable final Duration value) {
-        this.timeout = value;
+    public void setScheme(@jakarta.annotation.Nullable final ContainerHealthcheckScheme value) {
+        this.scheme = value;
     }
     /**
      * Sets the tls_server_name property value. If the protocol is https, the hostname to use for TLS certificate validation
@@ -303,17 +202,10 @@ public class MachineCheck implements AdditionalDataHolder, Parsable {
         this.tlsServerName = value;
     }
     /**
-     * Sets the tls_skip_verify property value. For http checks with https protocol, whether or not to verify the TLS certificate
+     * Sets the tls_skip_verify property value. If the protocol is https, whether or not to verify the TLS certificate
      * @param value Value to set for the tls_skip_verify property.
      */
     public void setTlsSkipVerify(@jakarta.annotation.Nullable final Boolean value) {
         this.tlsSkipVerify = value;
-    }
-    /**
-     * Sets the type property value. tcp or http
-     * @param value Value to set for the type property.
-     */
-    public void setType(@jakarta.annotation.Nullable final String value) {
-        this.type = value;
     }
 }

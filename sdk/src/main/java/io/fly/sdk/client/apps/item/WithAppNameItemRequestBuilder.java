@@ -9,6 +9,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import io.fly.sdk.client.apps.item.machines.MachinesRequestBuilder;
+import io.fly.sdk.client.apps.item.secrets.SecretsRequestBuilder;
 import io.fly.sdk.client.apps.item.volumes.VolumesRequestBuilder;
 import io.fly.sdk.client.models.App;
 import java.util.Collection;
@@ -27,6 +28,14 @@ public class WithAppNameItemRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public MachinesRequestBuilder machines() {
         return new MachinesRequestBuilder(pathParameters, requestAdapter);
+    }
+    /**
+     * The secrets property
+     * @return a {@link SecretsRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public SecretsRequestBuilder secrets() {
+        return new SecretsRequestBuilder(pathParameters, requestAdapter);
     }
     /**
      * The volumes property
