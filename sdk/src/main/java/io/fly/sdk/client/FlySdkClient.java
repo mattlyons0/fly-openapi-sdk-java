@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
 import com.microsoft.kiota.serialization.TextParseNodeFactory;
 import com.microsoft.kiota.serialization.TextSerializationWriterFactory;
 import io.fly.sdk.client.apps.AppsRequestBuilder;
+import io.fly.sdk.client.platform.PlatformRequestBuilder;
 import io.fly.sdk.client.tokens.TokensRequestBuilder;
 import io.kiota.serialization.json.JsonParseNodeFactory;
 import io.kiota.serialization.json.JsonSerializationWriterFactory;
@@ -29,6 +30,14 @@ public class FlySdkClient extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public AppsRequestBuilder apps() {
         return new AppsRequestBuilder(pathParameters, requestAdapter);
+    }
+    /**
+     * The platform property
+     * @return a {@link PlatformRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public PlatformRequestBuilder platform() {
+        return new PlatformRequestBuilder(pathParameters, requestAdapter);
     }
     /**
      * The tokens property

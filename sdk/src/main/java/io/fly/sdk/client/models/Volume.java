@@ -42,6 +42,14 @@ public class Volume implements AdditionalDataHolder, Parsable {
      */
     private Integer blockSize;
     /**
+     * The bytes_total property
+     */
+    private Integer bytesTotal;
+    /**
+     * The bytes_used property
+     */
+    private Integer bytesUsed;
+    /**
      * The created_at property
      */
     private String createdAt;
@@ -166,6 +174,22 @@ public class Volume implements AdditionalDataHolder, Parsable {
         return this.blockSize;
     }
     /**
+     * Gets the bytes_total property value. The bytes_total property
+     * @return a {@link Integer}
+     */
+    @jakarta.annotation.Nullable
+    public Integer getBytesTotal() {
+        return this.bytesTotal;
+    }
+    /**
+     * Gets the bytes_used property value. The bytes_used property
+     * @return a {@link Integer}
+     */
+    @jakarta.annotation.Nullable
+    public Integer getBytesUsed() {
+        return this.bytesUsed;
+    }
+    /**
      * Gets the created_at property value. The created_at property
      * @return a {@link String}
      */
@@ -187,7 +211,7 @@ public class Volume implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(18);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(20);
         deserializerMap.put("attached_alloc_id", (n) -> { this.setAttachedAllocId(n.getStringValue()); });
         deserializerMap.put("attached_machine_id", (n) -> { this.setAttachedMachineId(n.getStringValue()); });
         deserializerMap.put("auto_backup_enabled", (n) -> { this.setAutoBackupEnabled(n.getBooleanValue()); });
@@ -195,6 +219,8 @@ public class Volume implements AdditionalDataHolder, Parsable {
         deserializerMap.put("blocks_avail", (n) -> { this.setBlocksAvail(n.getIntegerValue()); });
         deserializerMap.put("blocks_free", (n) -> { this.setBlocksFree(n.getIntegerValue()); });
         deserializerMap.put("block_size", (n) -> { this.setBlockSize(n.getIntegerValue()); });
+        deserializerMap.put("bytes_total", (n) -> { this.setBytesTotal(n.getIntegerValue()); });
+        deserializerMap.put("bytes_used", (n) -> { this.setBytesUsed(n.getIntegerValue()); });
         deserializerMap.put("created_at", (n) -> { this.setCreatedAt(n.getStringValue()); });
         deserializerMap.put("encrypted", (n) -> { this.setEncrypted(n.getBooleanValue()); });
         deserializerMap.put("fstype", (n) -> { this.setFstype(n.getStringValue()); });
@@ -293,6 +319,8 @@ public class Volume implements AdditionalDataHolder, Parsable {
         writer.writeIntegerValue("blocks_avail", this.getBlocksAvail());
         writer.writeIntegerValue("blocks_free", this.getBlocksFree());
         writer.writeIntegerValue("block_size", this.getBlockSize());
+        writer.writeIntegerValue("bytes_total", this.getBytesTotal());
+        writer.writeIntegerValue("bytes_used", this.getBytesUsed());
         writer.writeStringValue("created_at", this.getCreatedAt());
         writer.writeBooleanValue("encrypted", this.getEncrypted());
         writer.writeStringValue("fstype", this.getFstype());
@@ -361,6 +389,20 @@ public class Volume implements AdditionalDataHolder, Parsable {
      */
     public void setBlockSize(@jakarta.annotation.Nullable final Integer value) {
         this.blockSize = value;
+    }
+    /**
+     * Sets the bytes_total property value. The bytes_total property
+     * @param value Value to set for the bytes_total property.
+     */
+    public void setBytesTotal(@jakarta.annotation.Nullable final Integer value) {
+        this.bytesTotal = value;
+    }
+    /**
+     * Sets the bytes_used property value. The bytes_used property
+     * @param value Value to set for the bytes_used property.
+     */
+    public void setBytesUsed(@jakarta.annotation.Nullable final Integer value) {
+        this.bytesUsed = value;
     }
     /**
      * Sets the created_at property value. The created_at property

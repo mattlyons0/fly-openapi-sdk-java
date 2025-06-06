@@ -1,4 +1,4 @@
-package io.fly.sdk.client.apps.item.secrets;
+package io.fly.sdk.client.apps.item.secretkeys;
 
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -9,20 +9,20 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import io.fly.sdk.client.apps.item.secrets.item.WithSecretNameItemRequestBuilder;
-import io.fly.sdk.client.models.AppSecrets;
+import io.fly.sdk.client.apps.item.secretkeys.item.WithSecretNameItemRequestBuilder;
+import io.fly.sdk.client.models.SecretKeys;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * Builds and executes requests for operations under /apps/{app_name}/secrets
+ * Builds and executes requests for operations under /apps/{app_name}/secretkeys
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class SecretsRequestBuilder extends BaseRequestBuilder {
+public class SecretkeysRequestBuilder extends BaseRequestBuilder {
     /**
-     * Gets an item from the io.fly.sdk.client.apps.item.secrets.item collection
-     * @param secret_name App secret name
+     * Gets an item from the io.fly.sdk.client.apps.item.secretkeys.item collection
+     * @param secret_name Secret key name
      * @return a {@link WithSecretNameItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
@@ -33,41 +33,41 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
         return new WithSecretNameItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new {@link SecretsRequestBuilder} and sets the default values.
+     * Instantiates a new {@link SecretkeysRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public SecretsRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/apps/{app_name}/secrets{?min_version*,show_secrets*}", pathParameters);
+    public SecretkeysRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/apps/{app_name}/secretkeys{?min_version*,types*}", pathParameters);
     }
     /**
-     * Instantiates a new {@link SecretsRequestBuilder} and sets the default values.
+     * Instantiates a new {@link SecretkeysRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public SecretsRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/apps/{app_name}/secrets{?min_version*,show_secrets*}", rawUrl);
+    public SecretkeysRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/apps/{app_name}/secretkeys{?min_version*,types*}", rawUrl);
     }
     /**
-     * List app secrets belonging to an app
-     * @return a {@link AppSecrets}
+     * List secret keys belonging to an app
+     * @return a {@link SecretKeys}
      */
     @jakarta.annotation.Nullable
-    public AppSecrets get() {
+    public SecretKeys get() {
         return get(null);
     }
     /**
-     * List app secrets belonging to an app
+     * List secret keys belonging to an app
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a {@link AppSecrets}
+     * @return a {@link SecretKeys}
      */
     @jakarta.annotation.Nullable
-    public AppSecrets get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    public SecretKeys get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, AppSecrets::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, null, SecretKeys::createFromDiscriminatorValue);
     }
     /**
-     * List app secrets belonging to an app
+     * List secret keys belonging to an app
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -75,7 +75,7 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * List app secrets belonging to an app
+     * List secret keys belonging to an app
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -89,15 +89,15 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a {@link SecretsRequestBuilder}
+     * @return a {@link SecretkeysRequestBuilder}
      */
     @jakarta.annotation.Nonnull
-    public SecretsRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
+    public SecretkeysRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
         Objects.requireNonNull(rawUrl);
-        return new SecretsRequestBuilder(rawUrl, requestAdapter);
+        return new SecretkeysRequestBuilder(rawUrl, requestAdapter);
     }
     /**
-     * List app secrets belonging to an app
+     * List secret keys belonging to an app
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
@@ -107,10 +107,10 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
         @jakarta.annotation.Nullable
         public String minVersion;
         /**
-         * Show the secret values.
+         * Comma-seperated list of secret keys to list
          */
         @jakarta.annotation.Nullable
-        public Boolean showSecrets;
+        public String types;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
          * @return a {@link Map<String, Object>}
@@ -119,7 +119,7 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
         public Map<String, Object> toQueryParameters() {
             final Map<String, Object> allQueryParams = new HashMap();
             allQueryParams.put("min_version", minVersion);
-            allQueryParams.put("show_secrets", showSecrets);
+            allQueryParams.put("types", types);
             return allQueryParams;
         }
     }

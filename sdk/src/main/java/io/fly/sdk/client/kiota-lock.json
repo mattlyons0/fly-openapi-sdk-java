@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "75E5738C687C97142311C91E6A1EFE3705AAABC7939E73C0360E85B27FBC762978A689635E289185143DDE6B8BE918FDCB400F4709BB45A748615FE9CDBB60A5",
+  "descriptionHash": "E9EC59F4854B23578A4C8615D610BA43FA0F46A3DD3D3CCE52BDFCEB6EAC4365157F1BE8B7FD93191C114348A03FACA12A74CF427D12FA6C4E50B7A9CB566A05",
   "descriptionLocation": "https://docs.machines.dev/swagger/doc.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.24.1",
+  "kiotaVersion": "1.26.1",
   "clientClassName": "FlySdkClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "io.fly.sdk.client",

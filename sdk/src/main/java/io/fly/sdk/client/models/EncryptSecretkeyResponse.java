@@ -1,4 +1,4 @@
-package io.fly.sdk.client.models.fly;
+package io.fly.sdk.client.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -7,30 +7,31 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/**
- * An optional object that defines one or more named top-level checks. The key for each check is the check name.
- */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
+public class EncryptSecretkeyResponse implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * Instantiates a new {@link MachineConfigChecks} and sets the default values.
+     * The ciphertext property
      */
-    public MachineConfigChecks() {
+    private java.util.List<Integer> ciphertext;
+    /**
+     * Instantiates a new {@link EncryptSecretkeyResponse} and sets the default values.
+     */
+    public EncryptSecretkeyResponse() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link MachineConfigChecks}
+     * @return a {@link EncryptSecretkeyResponse}
      */
     @jakarta.annotation.Nonnull
-    public static MachineConfigChecks createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static EncryptSecretkeyResponse createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new MachineConfigChecks();
+        return new EncryptSecretkeyResponse();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -41,12 +42,21 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
         return this.additionalData;
     }
     /**
+     * Gets the ciphertext property value. The ciphertext property
+     * @return a {@link java.util.List<Integer>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<Integer> getCiphertext() {
+        return this.ciphertext;
+    }
+    /**
      * The deserialization information for the current model
      * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(0);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
+        deserializerMap.put("ciphertext", (n) -> { this.setCiphertext(n.getCollectionOfPrimitiveValues(Integer.class)); });
         return deserializerMap;
     }
     /**
@@ -55,6 +65,7 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
+        writer.writeCollectionOfPrimitiveValues("ciphertext", this.getCiphertext());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -63,5 +74,12 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;
+    }
+    /**
+     * Sets the ciphertext property value. The ciphertext property
+     * @param value Value to set for the ciphertext property.
+     */
+    public void setCiphertext(@jakarta.annotation.Nullable final java.util.List<Integer> value) {
+        this.ciphertext = value;
     }
 }

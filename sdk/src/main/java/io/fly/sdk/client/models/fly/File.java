@@ -21,6 +21,10 @@ public class File implements AdditionalDataHolder, Parsable {
      */
     private String guestPath;
     /**
+     * The name of an image to use the OCI image config as the file contents.
+     */
+    private String imageConfig;
+    /**
      * Mode bits used to set permissions on this file as accepted by chmod(2).
      */
     private Integer mode;
@@ -62,8 +66,9 @@ public class File implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(4);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(5);
         deserializerMap.put("guest_path", (n) -> { this.setGuestPath(n.getStringValue()); });
+        deserializerMap.put("image_config", (n) -> { this.setImageConfig(n.getStringValue()); });
         deserializerMap.put("mode", (n) -> { this.setMode(n.getIntegerValue()); });
         deserializerMap.put("raw_value", (n) -> { this.setRawValue(n.getStringValue()); });
         deserializerMap.put("secret_name", (n) -> { this.setSecretName(n.getStringValue()); });
@@ -76,6 +81,14 @@ public class File implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nullable
     public String getGuestPath() {
         return this.guestPath;
+    }
+    /**
+     * Gets the image_config property value. The name of an image to use the OCI image config as the file contents.
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getImageConfig() {
+        return this.imageConfig;
     }
     /**
      * Gets the mode property value. Mode bits used to set permissions on this file as accepted by chmod(2).
@@ -108,6 +121,7 @@ public class File implements AdditionalDataHolder, Parsable {
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("guest_path", this.getGuestPath());
+        writer.writeStringValue("image_config", this.getImageConfig());
         writer.writeIntegerValue("mode", this.getMode());
         writer.writeStringValue("raw_value", this.getRawValue());
         writer.writeStringValue("secret_name", this.getSecretName());
@@ -126,6 +140,13 @@ public class File implements AdditionalDataHolder, Parsable {
      */
     public void setGuestPath(@jakarta.annotation.Nullable final String value) {
         this.guestPath = value;
+    }
+    /**
+     * Sets the image_config property value. The name of an image to use the OCI image config as the file contents.
+     * @param value Value to set for the image_config property.
+     */
+    public void setImageConfig(@jakarta.annotation.Nullable final String value) {
+        this.imageConfig = value;
     }
     /**
      * Sets the mode property value. Mode bits used to set permissions on this file as accepted by chmod(2).

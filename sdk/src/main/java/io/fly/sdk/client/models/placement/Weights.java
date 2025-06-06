@@ -1,4 +1,4 @@
-package io.fly.sdk.client.models.fly;
+package io.fly.sdk.client.models.placement;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -7,30 +7,27 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/**
- * An optional object that defines one or more named top-level checks. The key for each check is the check name.
- */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
+public class Weights implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * Instantiates a new {@link MachineConfigChecks} and sets the default values.
+     * Instantiates a new {@link Weights} and sets the default values.
      */
-    public MachineConfigChecks() {
+    public Weights() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link MachineConfigChecks}
+     * @return a {@link Weights}
      */
     @jakarta.annotation.Nonnull
-    public static MachineConfigChecks createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static Weights createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new MachineConfigChecks();
+        return new Weights();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

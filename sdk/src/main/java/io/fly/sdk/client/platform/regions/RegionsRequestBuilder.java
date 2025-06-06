@@ -1,4 +1,4 @@
-package io.fly.sdk.client.apps.item.secrets;
+package io.fly.sdk.client.platform.regions;
 
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
@@ -9,65 +9,52 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import io.fly.sdk.client.apps.item.secrets.item.WithSecretNameItemRequestBuilder;
-import io.fly.sdk.client.models.AppSecrets;
+import io.fly.sdk.client.models.main.RegionResponse;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
- * Builds and executes requests for operations under /apps/{app_name}/secrets
+ * Builds and executes requests for operations under /platform/regions
  */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class SecretsRequestBuilder extends BaseRequestBuilder {
+public class RegionsRequestBuilder extends BaseRequestBuilder {
     /**
-     * Gets an item from the io.fly.sdk.client.apps.item.secrets.item collection
-     * @param secret_name App secret name
-     * @return a {@link WithSecretNameItemRequestBuilder}
-     */
-    @jakarta.annotation.Nonnull
-    public WithSecretNameItemRequestBuilder bySecret_name(@jakarta.annotation.Nonnull final String secret_name) {
-        Objects.requireNonNull(secret_name);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("secret_name", secret_name);
-        return new WithSecretNameItemRequestBuilder(urlTplParams, requestAdapter);
-    }
-    /**
-     * Instantiates a new {@link SecretsRequestBuilder} and sets the default values.
+     * Instantiates a new {@link RegionsRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public SecretsRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/apps/{app_name}/secrets{?min_version*,show_secrets*}", pathParameters);
+    public RegionsRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/platform/regions{?cpu_kind*,cpus*,gpu_kind*,gpus*,memory_mb*,size*}", pathParameters);
     }
     /**
-     * Instantiates a new {@link SecretsRequestBuilder} and sets the default values.
+     * Instantiates a new {@link RegionsRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public SecretsRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/apps/{app_name}/secrets{?min_version*,show_secrets*}", rawUrl);
+    public RegionsRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/platform/regions{?cpu_kind*,cpus*,gpu_kind*,gpus*,memory_mb*,size*}", rawUrl);
     }
     /**
-     * List app secrets belonging to an app
-     * @return a {@link AppSecrets}
+     * List all regions on the platform with their current Machine capacity.
+     * @return a {@link RegionResponse}
      */
     @jakarta.annotation.Nullable
-    public AppSecrets get() {
+    public RegionResponse get() {
         return get(null);
     }
     /**
-     * List app secrets belonging to an app
+     * List all regions on the platform with their current Machine capacity.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a {@link AppSecrets}
+     * @return a {@link RegionResponse}
      */
     @jakarta.annotation.Nullable
-    public AppSecrets get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    public RegionResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.send(requestInfo, null, AppSecrets::createFromDiscriminatorValue);
+        return this.requestAdapter.send(requestInfo, null, RegionResponse::createFromDiscriminatorValue);
     }
     /**
-     * List app secrets belonging to an app
+     * List all regions on the platform with their current Machine capacity.
      * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
@@ -75,7 +62,7 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * List app secrets belonging to an app
+     * List all regions on the platform with their current Machine capacity.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link RequestInformation}
      */
@@ -89,28 +76,48 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a {@link SecretsRequestBuilder}
+     * @return a {@link RegionsRequestBuilder}
      */
     @jakarta.annotation.Nonnull
-    public SecretsRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
+    public RegionsRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
         Objects.requireNonNull(rawUrl);
-        return new SecretsRequestBuilder(rawUrl, requestAdapter);
+        return new RegionsRequestBuilder(rawUrl, requestAdapter);
     }
     /**
-     * List app secrets belonging to an app
+     * List all regions on the platform with their current Machine capacity.
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters implements QueryParameters {
         /**
-         * Minimum secrets version to return. Returned when setting a new secret
+         * guest CPU kind
          */
         @jakarta.annotation.Nullable
-        public String minVersion;
+        public String cpuKind;
         /**
-         * Show the secret values.
+         * guest CPU count
          */
         @jakarta.annotation.Nullable
-        public Boolean showSecrets;
+        public Integer cpus;
+        /**
+         * guest GPU kind
+         */
+        @jakarta.annotation.Nullable
+        public String gpuKind;
+        /**
+         * guest GPU count
+         */
+        @jakarta.annotation.Nullable
+        public Integer gpus;
+        /**
+         * guest memory in megabytes
+         */
+        @jakarta.annotation.Nullable
+        public Integer memoryMb;
+        /**
+         * guest machine size preset. default performance-1x
+         */
+        @jakarta.annotation.Nullable
+        public String size;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
          * @return a {@link Map<String, Object>}
@@ -118,8 +125,12 @@ public class SecretsRequestBuilder extends BaseRequestBuilder {
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {
             final Map<String, Object> allQueryParams = new HashMap();
-            allQueryParams.put("min_version", minVersion);
-            allQueryParams.put("show_secrets", showSecrets);
+            allQueryParams.put("cpu_kind", cpuKind);
+            allQueryParams.put("cpus", cpus);
+            allQueryParams.put("gpu_kind", gpuKind);
+            allQueryParams.put("gpus", gpus);
+            allQueryParams.put("memory_mb", memoryMb);
+            allQueryParams.put("size", size);
             return allQueryParams;
         }
     }

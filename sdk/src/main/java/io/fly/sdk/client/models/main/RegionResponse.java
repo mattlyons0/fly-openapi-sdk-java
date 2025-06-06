@@ -1,36 +1,38 @@
-package io.fly.sdk.client.models.fly;
+package io.fly.sdk.client.models.main;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import io.fly.sdk.client.models.reads.GetCapacityPerRegionRow;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/**
- * An optional object that defines one or more named top-level checks. The key for each check is the check name.
- */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
+public class RegionResponse implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * Instantiates a new {@link MachineConfigChecks} and sets the default values.
+     * The regions property
      */
-    public MachineConfigChecks() {
+    private java.util.List<GetCapacityPerRegionRow> regions;
+    /**
+     * Instantiates a new {@link RegionResponse} and sets the default values.
+     */
+    public RegionResponse() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link MachineConfigChecks}
+     * @return a {@link RegionResponse}
      */
     @jakarta.annotation.Nonnull
-    public static MachineConfigChecks createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static RegionResponse createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new MachineConfigChecks();
+        return new RegionResponse();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -46,8 +48,17 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(0);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
+        deserializerMap.put("regions", (n) -> { this.setRegions(n.getCollectionOfObjectValues(GetCapacityPerRegionRow::createFromDiscriminatorValue)); });
         return deserializerMap;
+    }
+    /**
+     * Gets the regions property value. The regions property
+     * @return a {@link java.util.List<GetCapacityPerRegionRow>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<GetCapacityPerRegionRow> getRegions() {
+        return this.regions;
     }
     /**
      * Serializes information the current object
@@ -55,6 +66,7 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
+        writer.writeCollectionOfObjectValues("regions", this.getRegions());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -63,5 +75,12 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;
+    }
+    /**
+     * Sets the regions property value. The regions property
+     * @param value Value to set for the regions property.
+     */
+    public void setRegions(@jakarta.annotation.Nullable final java.util.List<GetCapacityPerRegionRow> value) {
+        this.regions = value;
     }
 }

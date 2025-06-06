@@ -8,7 +8,9 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
+import io.fly.sdk.client.apps.item.deploy_token.DeployTokenRequestBuilder;
 import io.fly.sdk.client.apps.item.machines.MachinesRequestBuilder;
+import io.fly.sdk.client.apps.item.secretkeys.SecretkeysRequestBuilder;
 import io.fly.sdk.client.apps.item.secrets.SecretsRequestBuilder;
 import io.fly.sdk.client.apps.item.volumes.VolumesRequestBuilder;
 import io.fly.sdk.client.models.App;
@@ -22,12 +24,28 @@ import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class WithAppNameItemRequestBuilder extends BaseRequestBuilder {
     /**
+     * The deploy_token property
+     * @return a {@link DeployTokenRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public DeployTokenRequestBuilder deployToken() {
+        return new DeployTokenRequestBuilder(pathParameters, requestAdapter);
+    }
+    /**
      * The machines property
      * @return a {@link MachinesRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MachinesRequestBuilder machines() {
         return new MachinesRequestBuilder(pathParameters, requestAdapter);
+    }
+    /**
+     * The secretkeys property
+     * @return a {@link SecretkeysRequestBuilder}
+     */
+    @jakarta.annotation.Nonnull
+    public SecretkeysRequestBuilder secretkeys() {
+        return new SecretkeysRequestBuilder(pathParameters, requestAdapter);
     }
     /**
      * The secrets property

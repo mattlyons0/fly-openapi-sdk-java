@@ -18,7 +18,7 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     private Boolean autoDestroy;
     /**
-     * The checks property
+     * An optional object that defines one or more named top-level checks. The key for each check is the check name.
      */
     private MachineConfigChecks checks;
     /**
@@ -62,10 +62,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     private MachineMetrics metrics;
     /**
-     * The mounts property
-     */
-    private java.util.List<MachineMount> mounts;
-    /**
      * The processes property
      */
     private java.util.List<MachineProcess> processes;
@@ -97,10 +93,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      * The stop_config property
      */
     private StopConfig stopConfig;
-    /**
-     * Volumes describe the set of volumes that can be attached to the machine. Used in conjuctionwith containers
-     */
-    private java.util.List<VolumeConfig> volumes;
     /**
      * Instantiates a new {@link MachineConfig} and sets the default values.
      */
@@ -134,7 +126,7 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         return this.autoDestroy;
     }
     /**
-     * Gets the checks property value. The checks property
+     * Gets the checks property value. An optional object that defines one or more named top-level checks. The key for each check is the check name.
      * @return a {@link MachineConfigChecks}
      */
     @jakarta.annotation.Nullable
@@ -179,7 +171,7 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(22);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(20);
         deserializerMap.put("auto_destroy", (n) -> { this.setAutoDestroy(n.getBooleanValue()); });
         deserializerMap.put("checks", (n) -> { this.setChecks(n.getObjectValue(MachineConfigChecks::createFromDiscriminatorValue)); });
         deserializerMap.put("containers", (n) -> { this.setContainers(n.getCollectionOfObjectValues(ContainerConfig::createFromDiscriminatorValue)); });
@@ -192,7 +184,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         deserializerMap.put("init", (n) -> { this.setInit(n.getObjectValue(MachineInit::createFromDiscriminatorValue)); });
         deserializerMap.put("metadata", (n) -> { this.setMetadata(n.getObjectValue(MachineConfigMetadata::createFromDiscriminatorValue)); });
         deserializerMap.put("metrics", (n) -> { this.setMetrics(n.getObjectValue(MachineMetrics::createFromDiscriminatorValue)); });
-        deserializerMap.put("mounts", (n) -> { this.setMounts(n.getCollectionOfObjectValues(MachineMount::createFromDiscriminatorValue)); });
         deserializerMap.put("processes", (n) -> { this.setProcesses(n.getCollectionOfObjectValues(MachineProcess::createFromDiscriminatorValue)); });
         deserializerMap.put("restart", (n) -> { this.setRestart(n.getObjectValue(MachineRestart::createFromDiscriminatorValue)); });
         deserializerMap.put("schedule", (n) -> { this.setSchedule(n.getStringValue()); });
@@ -201,7 +192,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         deserializerMap.put("standbys", (n) -> { this.setStandbys(n.getCollectionOfPrimitiveValues(String.class)); });
         deserializerMap.put("statics", (n) -> { this.setStatics(n.getCollectionOfObjectValues(StaticEscaped::createFromDiscriminatorValue)); });
         deserializerMap.put("stop_config", (n) -> { this.setStopConfig(n.getObjectValue(StopConfig::createFromDiscriminatorValue)); });
-        deserializerMap.put("volumes", (n) -> { this.setVolumes(n.getCollectionOfObjectValues(VolumeConfig::createFromDiscriminatorValue)); });
         return deserializerMap;
     }
     /**
@@ -251,14 +241,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nullable
     public MachineMetrics getMetrics() {
         return this.metrics;
-    }
-    /**
-     * Gets the mounts property value. The mounts property
-     * @return a {@link java.util.List<MachineMount>}
-     */
-    @jakarta.annotation.Nullable
-    public java.util.List<MachineMount> getMounts() {
-        return this.mounts;
     }
     /**
      * Gets the processes property value. The processes property
@@ -325,14 +307,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         return this.stopConfig;
     }
     /**
-     * Gets the volumes property value. Volumes describe the set of volumes that can be attached to the machine. Used in conjuctionwith containers
-     * @return a {@link java.util.List<VolumeConfig>}
-     */
-    @jakarta.annotation.Nullable
-    public java.util.List<VolumeConfig> getVolumes() {
-        return this.volumes;
-    }
-    /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
@@ -350,7 +324,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         writer.writeObjectValue("init", this.getInit());
         writer.writeObjectValue("metadata", this.getMetadata());
         writer.writeObjectValue("metrics", this.getMetrics());
-        writer.writeCollectionOfObjectValues("mounts", this.getMounts());
         writer.writeCollectionOfObjectValues("processes", this.getProcesses());
         writer.writeObjectValue("restart", this.getRestart());
         writer.writeStringValue("schedule", this.getSchedule());
@@ -359,7 +332,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         writer.writeCollectionOfPrimitiveValues("standbys", this.getStandbys());
         writer.writeCollectionOfObjectValues("statics", this.getStatics());
         writer.writeObjectValue("stop_config", this.getStopConfig());
-        writer.writeCollectionOfObjectValues("volumes", this.getVolumes());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -377,7 +349,7 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         this.autoDestroy = value;
     }
     /**
-     * Sets the checks property value. The checks property
+     * Sets the checks property value. An optional object that defines one or more named top-level checks. The key for each check is the check name.
      * @param value Value to set for the checks property.
      */
     public void setChecks(@jakarta.annotation.Nullable final MachineConfigChecks value) {
@@ -454,13 +426,6 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
         this.metrics = value;
     }
     /**
-     * Sets the mounts property value. The mounts property
-     * @param value Value to set for the mounts property.
-     */
-    public void setMounts(@jakarta.annotation.Nullable final java.util.List<MachineMount> value) {
-        this.mounts = value;
-    }
-    /**
      * Sets the processes property value. The processes property
      * @param value Value to set for the processes property.
      */
@@ -515,12 +480,5 @@ public class MachineConfig implements AdditionalDataHolder, Parsable {
      */
     public void setStopConfig(@jakarta.annotation.Nullable final StopConfig value) {
         this.stopConfig = value;
-    }
-    /**
-     * Sets the volumes property value. Volumes describe the set of volumes that can be attached to the machine. Used in conjuctionwith containers
-     * @param value Value to set for the volumes property.
-     */
-    public void setVolumes(@jakarta.annotation.Nullable final java.util.List<VolumeConfig> value) {
-        this.volumes = value;
     }
 }

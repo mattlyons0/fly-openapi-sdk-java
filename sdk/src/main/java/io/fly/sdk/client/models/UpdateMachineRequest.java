@@ -43,6 +43,10 @@ public class UpdateMachineRequest implements AdditionalDataHolder, Parsable {
      */
     private Boolean skipLaunch;
     /**
+     * The skip_secrets property
+     */
+    private Boolean skipSecrets;
+    /**
      * The skip_service_registration property
      */
     private Boolean skipServiceRegistration;
@@ -92,7 +96,7 @@ public class UpdateMachineRequest implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(8);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(9);
         deserializerMap.put("config", (n) -> { this.setConfig(n.getObjectValue(MachineConfig::createFromDiscriminatorValue)); });
         deserializerMap.put("current_version", (n) -> { this.setCurrentVersion(n.getStringValue()); });
         deserializerMap.put("lease_ttl", (n) -> { this.setLeaseTtl(n.getIntegerValue()); });
@@ -100,6 +104,7 @@ public class UpdateMachineRequest implements AdditionalDataHolder, Parsable {
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
         deserializerMap.put("region", (n) -> { this.setRegion(n.getStringValue()); });
         deserializerMap.put("skip_launch", (n) -> { this.setSkipLaunch(n.getBooleanValue()); });
+        deserializerMap.put("skip_secrets", (n) -> { this.setSkipSecrets(n.getBooleanValue()); });
         deserializerMap.put("skip_service_registration", (n) -> { this.setSkipServiceRegistration(n.getBooleanValue()); });
         return deserializerMap;
     }
@@ -144,6 +149,14 @@ public class UpdateMachineRequest implements AdditionalDataHolder, Parsable {
         return this.skipLaunch;
     }
     /**
+     * Gets the skip_secrets property value. The skip_secrets property
+     * @return a {@link Boolean}
+     */
+    @jakarta.annotation.Nullable
+    public Boolean getSkipSecrets() {
+        return this.skipSecrets;
+    }
+    /**
      * Gets the skip_service_registration property value. The skip_service_registration property
      * @return a {@link Boolean}
      */
@@ -164,6 +177,7 @@ public class UpdateMachineRequest implements AdditionalDataHolder, Parsable {
         writer.writeStringValue("name", this.getName());
         writer.writeStringValue("region", this.getRegion());
         writer.writeBooleanValue("skip_launch", this.getSkipLaunch());
+        writer.writeBooleanValue("skip_secrets", this.getSkipSecrets());
         writer.writeBooleanValue("skip_service_registration", this.getSkipServiceRegistration());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -222,6 +236,13 @@ public class UpdateMachineRequest implements AdditionalDataHolder, Parsable {
      */
     public void setSkipLaunch(@jakarta.annotation.Nullable final Boolean value) {
         this.skipLaunch = value;
+    }
+    /**
+     * Sets the skip_secrets property value. The skip_secrets property
+     * @param value Value to set for the skip_secrets property.
+     */
+    public void setSkipSecrets(@jakarta.annotation.Nullable final Boolean value) {
+        this.skipSecrets = value;
     }
     /**
      * Sets the skip_service_registration property value. The skip_service_registration property

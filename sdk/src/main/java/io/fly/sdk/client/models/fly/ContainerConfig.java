@@ -50,10 +50,6 @@ public class ContainerConfig implements AdditionalDataHolder, Parsable {
      */
     private String image;
     /**
-     * Set of mounts added to the container. These must reference a volume in the machine config via its name.
-     */
-    private java.util.List<ContainerMount> mounts;
-    /**
      * Name is used to identify the container in the machine.
      */
     private String name;
@@ -151,7 +147,7 @@ public class ContainerConfig implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(15);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(14);
         deserializerMap.put("cmd", (n) -> { this.setCmd(n.getCollectionOfPrimitiveValues(String.class)); });
         deserializerMap.put("depends_on", (n) -> { this.setDependsOn(n.getCollectionOfObjectValues(ContainerDependency::createFromDiscriminatorValue)); });
         deserializerMap.put("entrypoint", (n) -> { this.setEntrypoint(n.getCollectionOfPrimitiveValues(String.class)); });
@@ -161,7 +157,6 @@ public class ContainerConfig implements AdditionalDataHolder, Parsable {
         deserializerMap.put("files", (n) -> { this.setFiles(n.getCollectionOfObjectValues(File::createFromDiscriminatorValue)); });
         deserializerMap.put("healthchecks", (n) -> { this.setHealthchecks(n.getCollectionOfObjectValues(ContainerHealthcheck::createFromDiscriminatorValue)); });
         deserializerMap.put("image", (n) -> { this.setImage(n.getStringValue()); });
-        deserializerMap.put("mounts", (n) -> { this.setMounts(n.getCollectionOfObjectValues(ContainerMount::createFromDiscriminatorValue)); });
         deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
         deserializerMap.put("restart", (n) -> { this.setRestart(n.getObjectValue(MachineRestart::createFromDiscriminatorValue)); });
         deserializerMap.put("secrets", (n) -> { this.setSecrets(n.getCollectionOfObjectValues(MachineSecret::createFromDiscriminatorValue)); });
@@ -192,14 +187,6 @@ public class ContainerConfig implements AdditionalDataHolder, Parsable {
     @jakarta.annotation.Nullable
     public String getImage() {
         return this.image;
-    }
-    /**
-     * Gets the mounts property value. Set of mounts added to the container. These must reference a volume in the machine config via its name.
-     * @return a {@link java.util.List<ContainerMount>}
-     */
-    @jakarta.annotation.Nullable
-    public java.util.List<ContainerMount> getMounts() {
-        return this.mounts;
     }
     /**
      * Gets the name property value. Name is used to identify the container in the machine.
@@ -256,7 +243,6 @@ public class ContainerConfig implements AdditionalDataHolder, Parsable {
         writer.writeCollectionOfObjectValues("files", this.getFiles());
         writer.writeCollectionOfObjectValues("healthchecks", this.getHealthchecks());
         writer.writeStringValue("image", this.getImage());
-        writer.writeCollectionOfObjectValues("mounts", this.getMounts());
         writer.writeStringValue("name", this.getName());
         writer.writeObjectValue("restart", this.getRestart());
         writer.writeCollectionOfObjectValues("secrets", this.getSecrets());
@@ -333,13 +319,6 @@ public class ContainerConfig implements AdditionalDataHolder, Parsable {
      */
     public void setImage(@jakarta.annotation.Nullable final String value) {
         this.image = value;
-    }
-    /**
-     * Sets the mounts property value. Set of mounts added to the container. These must reference a volume in the machine config via its name.
-     * @param value Value to set for the mounts property.
-     */
-    public void setMounts(@jakarta.annotation.Nullable final java.util.List<ContainerMount> value) {
-        this.mounts = value;
     }
     /**
      * Sets the name property value. Name is used to identify the container in the machine.

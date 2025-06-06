@@ -1,4 +1,4 @@
-package io.fly.sdk.client.models.fly;
+package io.fly.sdk.client.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -7,30 +7,35 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/**
- * An optional object that defines one or more named top-level checks. The key for each check is the check name.
- */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
+public class SetSecretkeyRequest implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * Instantiates a new {@link MachineConfigChecks} and sets the default values.
+     * The type property
      */
-    public MachineConfigChecks() {
+    private String type;
+    /**
+     * The value property
+     */
+    private java.util.List<Integer> value;
+    /**
+     * Instantiates a new {@link SetSecretkeyRequest} and sets the default values.
+     */
+    public SetSecretkeyRequest() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a {@link MachineConfigChecks}
+     * @return a {@link SetSecretkeyRequest}
      */
     @jakarta.annotation.Nonnull
-    public static MachineConfigChecks createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static SetSecretkeyRequest createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new MachineConfigChecks();
+        return new SetSecretkeyRequest();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -46,8 +51,26 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(0);
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        deserializerMap.put("type", (n) -> { this.setType(n.getStringValue()); });
+        deserializerMap.put("value", (n) -> { this.setValue(n.getCollectionOfPrimitiveValues(Integer.class)); });
         return deserializerMap;
+    }
+    /**
+     * Gets the type property value. The type property
+     * @return a {@link String}
+     */
+    @jakarta.annotation.Nullable
+    public String getType() {
+        return this.type;
+    }
+    /**
+     * Gets the value property value. The value property
+     * @return a {@link java.util.List<Integer>}
+     */
+    @jakarta.annotation.Nullable
+    public java.util.List<Integer> getValue() {
+        return this.value;
     }
     /**
      * Serializes information the current object
@@ -55,6 +78,8 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
+        writer.writeStringValue("type", this.getType());
+        writer.writeCollectionOfPrimitiveValues("value", this.getValue());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -63,5 +88,19 @@ public class MachineConfigChecks implements AdditionalDataHolder, Parsable {
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;
+    }
+    /**
+     * Sets the type property value. The type property
+     * @param value Value to set for the type property.
+     */
+    public void setType(@jakarta.annotation.Nullable final String value) {
+        this.type = value;
+    }
+    /**
+     * Sets the value property value. The value property
+     * @param value Value to set for the value property.
+     */
+    public void setValue(@jakarta.annotation.Nullable final java.util.List<Integer> value) {
+        this.value = value;
     }
 }

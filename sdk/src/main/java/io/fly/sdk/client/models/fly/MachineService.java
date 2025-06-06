@@ -22,9 +22,9 @@ public class MachineService implements AdditionalDataHolder, Parsable {
      */
     private MachineServiceAutostop autostop;
     /**
-     * The checks property
+     * An optional list of service checks
      */
-    private java.util.List<MachineCheck> checks;
+    private java.util.List<MachineServiceCheck> checks;
     /**
      * The concurrency property
      */
@@ -94,11 +94,11 @@ public class MachineService implements AdditionalDataHolder, Parsable {
         return this.autostop;
     }
     /**
-     * Gets the checks property value. The checks property
-     * @return a {@link java.util.List<MachineCheck>}
+     * Gets the checks property value. An optional list of service checks
+     * @return a {@link java.util.List<MachineServiceCheck>}
      */
     @jakarta.annotation.Nullable
-    public java.util.List<MachineCheck> getChecks() {
+    public java.util.List<MachineServiceCheck> getChecks() {
         return this.checks;
     }
     /**
@@ -118,7 +118,7 @@ public class MachineService implements AdditionalDataHolder, Parsable {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(10);
         deserializerMap.put("autostart", (n) -> { this.setAutostart(n.getBooleanValue()); });
         deserializerMap.put("autostop", (n) -> { this.setAutostop(n.getEnumValue(MachineServiceAutostop::forValue)); });
-        deserializerMap.put("checks", (n) -> { this.setChecks(n.getCollectionOfObjectValues(MachineCheck::createFromDiscriminatorValue)); });
+        deserializerMap.put("checks", (n) -> { this.setChecks(n.getCollectionOfObjectValues(MachineServiceCheck::createFromDiscriminatorValue)); });
         deserializerMap.put("concurrency", (n) -> { this.setConcurrency(n.getObjectValue(MachineServiceConcurrency::createFromDiscriminatorValue)); });
         deserializerMap.put("force_instance_description", (n) -> { this.setForceInstanceDescription(n.getStringValue()); });
         deserializerMap.put("force_instance_key", (n) -> { this.setForceInstanceKey(n.getStringValue()); });
@@ -216,10 +216,10 @@ public class MachineService implements AdditionalDataHolder, Parsable {
         this.autostop = value;
     }
     /**
-     * Sets the checks property value. The checks property
+     * Sets the checks property value. An optional list of service checks
      * @param value Value to set for the checks property.
      */
-    public void setChecks(@jakarta.annotation.Nullable final java.util.List<MachineCheck> value) {
+    public void setChecks(@jakarta.annotation.Nullable final java.util.List<MachineServiceCheck> value) {
         this.checks = value;
     }
     /**
