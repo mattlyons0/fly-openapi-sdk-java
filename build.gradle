@@ -1,0 +1,4 @@
+allprojects {
+    group = 'io.fly'
+    version = '0.5.2'
+}
